@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Google Fonts for Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-brain"></i>
+                <h1>NeuroScan AI</h1>
+            </div>
+            <p class="subtitle">Advanced Brain Tumor Detection & Classification System</p>
+        </header>
+
+        <main>
+            <div class="upload-card">
+                <div class="upload-area" id="drop-area">
+                    <input type="file" id="fileElem" accept="image/*" hidden>
+                    <div class="icon-container">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <h3>Drag & Drop MRI Scan</h3>
+                    <p>or</p>
+                    <button class="btn-select" id="fileSelect">Browse Files</button>
+                    <p class="file-info">Supported formats: JPG, PNG, JPEG</p>
+                </div>
+
+                <div class="preview-area hidden" id="previewArea">
+                    <img id="imagePreview" src="" alt="MRI Preview">
+                    <div class="loading-overlay hidden" id="loadingOverlay">
+                        <div class="spinner"></div>
+                        <p>Analyzing...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-card hidden" id="resultCard">
+                <h2>Analysis Result</h2>
+                <div class="result-content">
+                    <div class="result-item">
+                        <span class="label">Prediction</span>
+                        <h3 class="value" id="predClass">--</h3>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Confidence</span>
+                        <h3 class="value" id="predConf">--</h3>
+                    </div>
+                </div>
+                <!-- Progress bar for confidence -->
+                <div class="confidence-bar-container">
+                    <div class="confidence-bar" id="confidenceBar"></div>
+                </div>
+                <button class="btn-reset" id="resetBtn">Analyze Another</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 NeuroScan AI. Powered by Deep Learning.</p>
+        </footer>
+    </div>
+
+    <!-- Chatbot Widget -->
+    <button class="chat-fab" id="chatFab">
+        <i class="fa-solid fa-message"></i>
+    </button>
+
+    <div class="chat-window hidden" id="chatWindow">
+        <div class="chat-header">
+            <h3>Assistant</h3>
+            <button class="chat-close" id="chatClose">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                Hello! I can answer questions about brain tumors or this application.
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="file" id="chatFileInput" accept="image/*" hidden>
+            <label for="chatFileInput" class="chat-upload-btn">
+                <i class="fa-solid fa-camera"></i>
+            </label>
+            <input type="text" id="chatInput" placeholder="Type a message...">
+            <button id="chatSendBtn">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
