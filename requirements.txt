@@ -1,5 +1,6 @@
 flask
-tensorflow==2.15.0
+tensorflow
+tf-keras
 numpy
 pillow
 matplotlib
