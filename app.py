@@ -8,7 +8,7 @@ from PIL import Image
 app = Flask(__name__)
 
 # --- CONFIGURATION ---
-MODEL_PATH = 'brain_tumor_model.h5'
+MODEL_PATH = os.path.join(os.path.dirname(__file__), 'brain_tumor_model.h5')
 # IMPORTANT: Update these class names to match your training data's class_indices exactly!
 # Typically found in: train_data.class_indices
 # Mapped to friendly names: ['glioma_tumor', 'meningioma_tumor', 'no_tumor', 'pituitary_tumor']
@@ -27,6 +27,8 @@ model = None
 
 def load_brain_tumor_model():
     global model
+    print(f"📂 Current Directory: {os.getcwd()}")
+    print(f"📄 Files in root: {os.listdir(os.path.dirname(__file__))}")
     try:
         if os.path.exists(MODEL_PATH):
             model = load_model(MODEL_PATH)
